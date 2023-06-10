@@ -1,20 +1,14 @@
 plugins {
-    id 'java-library'
+    id 'java'
+    id 'application'
 }
-
-group = 'com.example'
-version = '1.0'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':utils')
 }
-
+repositories {
+    mavenCentral()
+}
 test {
     useJUnitPlatform()
 }
-
-compileJava{}.dependsOn(':utils:publishToMavenLocal')
+compileJava {}.dependsOn(':utils:publishToMavenLocal')
