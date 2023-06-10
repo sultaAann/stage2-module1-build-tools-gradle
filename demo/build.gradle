@@ -1,43 +1,16 @@
 plugins {
-    // Apply the java-library plugin to add support for Java Library
     id 'java-library'
-
-    id "com.jfrog.artifactory" version "4.16.1"
 }
 
-apply plugin: "com.jfrog.artifactory"
-apply plugin: 'maven-publish'
-java {
-    sourceCompatibility = '20.0.1'
-}
+group = 'com.example'
+version = '1.0'
 
 repositories {
     mavenCentral()
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.example'
-            artifactId = 'my-projec1t'
-            version = '1.0.0'
-
-            from components.java
-        }
-    }
-}
-
 dependencies {
-
-    implementation 'org.apache.commons:commons-lang3:3.10'
-}
-jar {
-    manifest {
-        attributes(
-                'Implementation-Title': 'My Project',
-                'Implementation-Version': '1.0.0'
-        )
-    }
+    implementation project(':utils')
 }
 
 test {
